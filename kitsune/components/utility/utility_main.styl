@@ -1,0 +1,49 @@
+@charset "utf8"
+@import "kouto-swiss"
+normalize()
+
+html
+	box-sizing-reset()
+
+*::-moz-selection
+	background-color:lightblue;
+*::selection
+	background-color:lightblue;
+
+.pull-right
+	float:right;
+.pull-left
+	float:left;
+.pull-reset
+	float:none;
+
+color()
+	if arguments == auto
+		if round(luminosity(@background||@background-color)) == 1
+			color #000
+		else if round(luminosity(@background||@background-color)) == 0
+			color #fff
+	else
+		color arguments
+
+String(str)
+	return ""+str+""
+
+print(str="waiting for input")
+	html
+		&:before
+			content:(str)
+			display:block;
+			position:absolute;
+			top:0;
+			left:0;
+			z-index:9999;
+
+try(prop,val,enabled=true)
+	if enabled
+		@supports (unquote(prop+":"+val))
+			{block}
+
+set(key)
+	.{unquote(use.selector[key])}
+		{block}
