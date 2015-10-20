@@ -11,15 +11,15 @@ ToggleServerBtn = builder.get_object("ToggleServerOn")
 
 #define functions here
 class Handler():
-    def onDeleteWindow(self, *args):
+    def on_MainWindow_destroy(self, *args):
         Gtk.main_quit(*args)
-    def ToggleServerOnPreon_ToggleServerOn_toggledss():
+        quit
+    def on_ToggleServerOn_toggled(self, *args):
         print("hello World!")
         return 1
-
-    def ToggleServerOn_toggled_cb():
+    def ToggleServerOn_toggled_cb(self, *args):
         pass
-    
+
 #link signals to functions here - No LOOPS ALLOWED without a sub process
 ###handlers = {
 ###    "onDeleteWindow": Gtk.main_quit,
