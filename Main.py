@@ -2,6 +2,11 @@ from gi.repository import Gtk
 # help from http://python-gtk-3-tutorial.readthedocs.org/en/latest/builder.html
 #import Gtk.builder
 
+#For The Node Controls
+import subprocess
+
+
+
 builder = Gtk.Builder()
 
 builder.add_from_file("MainWindow.glade")
@@ -22,8 +27,12 @@ class Handler():
     def on_ToggleServerOn_toggled(self, *args): 
         if ToggleServerBtn.get_active(): #get active is boolean! toggle button
             print("hello World - Pressed Down!")
+            subprocess.call(["nodejs", "./kitsune/index.js"])#needs return a thread id.
+            ToggleServerBtn.set_label("Server Started")
         else:
             print("Pressed Pressed Up!")
+            subprocess.call(["pkill", "nodejs"])
+            ToggleServerBtn.set_label("Server Stopped")
         return 1
 
 
