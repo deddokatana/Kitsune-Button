@@ -27,7 +27,6 @@
                 <property name="receives_default">True</property>
                 <property name="use_action_appearance">False</property>
                 <signal name="toggled" handler="on_ToggleServerOn_toggled" swapped="no"/>
-                <signal name="toggled" handler="ToggleServerOn_toggled_cb" swapped="no"/>
               </object>
               <packing>
                 <property name="resize">True</property>
