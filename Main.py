@@ -13,7 +13,7 @@ builder.add_from_file("MainWindow.glade")
 
 MainWindow = builder.get_object("MainWindow")
 ToggleServerBtn = builder.get_object("ToggleServerOn")
-
+LaunchBrowserBtn = builder.get_object("LaunchBrowserBtn")
 
 # check signals->[handler] column  in glade object properties bar
 # to determine the function names.
@@ -22,17 +22,19 @@ class Handler():
 # define functions here
     def on_MainWindow_destroy(self, *args):
         Gtk.main_quit(*args)
-        quit
-        return 1
+        quit()
+        return 0
     def on_ToggleServerOn_toggled(self, *args): 
         if ToggleServerBtn.get_active(): #get active is boolean! toggle button
             print("hello World - Pressed Down!")
             subprocess.call(["nodejs", "./kitsune/index.js"])#needs return a thread id.
             ToggleServerBtn.set_label("Server Started")
+            LaunchBrowserBtn.set_visible(True)
         else:
             print("Pressed Pressed Up!")
             subprocess.call(["pkill", "nodejs"])
             ToggleServerBtn.set_label("Server Stopped")
+            LaunchBrowserBtn.set_visible(False)
         return 1
 
 
