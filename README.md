@@ -1,2 +1,2 @@
 # Foxhole
-The Kitsune Gui
+The Kitsune Launch Button
